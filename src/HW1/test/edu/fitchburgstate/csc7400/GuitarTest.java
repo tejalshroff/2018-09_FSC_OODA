@@ -1,14 +1,19 @@
-package HW1.test;
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 1
+ * Date: 2018-09-14
+ * Students:  Tejal Shroff (@01387716)
+ */
+package HW1.test.edu.fitchburgstate.csc7400;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import HW1.edu.fitchburgstate.csc7400.Guitar;
 
-import HW1.Guitar;
-
-class GuitarTest {
-	
+public class GuitarTest {
 	Guitar testGuitar;
 
 	@BeforeEach
@@ -21,7 +26,7 @@ class GuitarTest {
 				"electric", // Type of Guitar
 				"Maple", // Back wood
 				"Adirondack" // Face wood
-				);
+		);
 	}
 
 	@Test
@@ -79,5 +84,9 @@ class GuitarTest {
 		String expected = "Adirondack";
 		String returned = this.testGuitar.getTopWood();
 		assertEquals(expected, returned, String.format("Top wood %s != %s", expected, returned));
+	}
+
+	@org.junit.After
+	public void tearDown() throws Exception {
 	}
 }
