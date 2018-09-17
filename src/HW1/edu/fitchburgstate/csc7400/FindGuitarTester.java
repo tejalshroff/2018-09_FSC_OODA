@@ -9,7 +9,7 @@ package HW1.edu.fitchburgstate.csc7400;
 
 /**
  * FindGuitarTester class drives the project where Erin can search his guitar
- * and keep detail information of Inventory
+ * and keep detail information of guitar inventory
  *
  * @author Tejal Shroff
  *
@@ -18,7 +18,6 @@ package HW1.edu.fitchburgstate.csc7400;
 public class FindGuitarTester {
 
   public static void main(String[] args) {
-    // Set up Rick's guitar inventory
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
 
@@ -39,7 +38,7 @@ public class FindGuitarTester {
 
   /**
    * Add guitar details to inventory
-   * @param inventory
+   * @param inventory object of inventory class
    */
   public static void initializeInventory(Inventory inventory) {
     inventory.addGuitar("11277", 3999.95, "Collings", "CJ", "acoustic",

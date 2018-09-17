@@ -13,9 +13,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import HW1.edu.fitchburgstate.csc7400.Guitar;
 
+/**
+ * Test methods for Guitar class
+ * @author Tejal Shroff
+ */
 public class GuitarTest {
 	Guitar testGuitar;
 
+	/**
+	 * Initializing the guitar object with some default value
+	 * @throws Exception
+	 */
 	@BeforeEach
 	void setUp() throws Exception {
 		this.testGuitar = new Guitar(
@@ -29,6 +37,9 @@ public class GuitarTest {
 		);
 	}
 
+	/**
+	 * Test case for mocking serial number data
+	 */
 	@Test
 	void testGetSerialNumber() {
 		String expected = "AB123";
@@ -36,6 +47,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Serial number %s != %s", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking price data
+	 */
 	@Test
 	void testGetPrice() {
 		double expected = 203.35;
@@ -43,6 +57,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, 0.01, String.format("Price %f != %f", expected, returned));
 	}
 
+	/**
+	 * Test case for setting and getting price data
+	 */
 	@Test
 	void testSetPrice() {
 		double expected = 225.10;
@@ -51,6 +68,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Price %f != %f", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking manufacture data
+	 */
 	@Test
 	void testGetManufacturer() {
 		String expected = "Gibson";
@@ -58,6 +78,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Manufacturer %s != %s", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking Model data
+	 */
 	@Test
 	void testGetModel() {
 		String expected = "EasyLearn";
@@ -65,6 +88,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Model %s != %s", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking Type data
+	 */
 	@Test
 	void testGetType() {
 		String expected = "electric";
@@ -72,6 +98,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Type %s != %s", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking Back wood data
+	 */
 	@Test
 	void testGetBackWood() {
 		String expected = "Maple";
@@ -79,6 +108,9 @@ public class GuitarTest {
 		assertEquals(expected, returned, String.format("Back wood %s != %s", expected, returned));
 	}
 
+	/**
+	 * Test case for mocking top wood data
+	 */
 	@Test
 	void testGetTopWood() {
 		String expected = "Adirondack";
