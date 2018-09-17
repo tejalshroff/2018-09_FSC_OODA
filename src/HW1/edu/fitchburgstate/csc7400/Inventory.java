@@ -61,33 +61,47 @@ public class Inventory {
    * @param searchGuitar Guitar object
    * @return Details for searched guitar else returns null if guitar not found
    */
-  public Guitar search(Guitar searchGuitar) {
+  public List<Guitar>  search(Guitar searchGuitar) {
+    List<Guitar> guitarList = new LinkedList<Guitar>() ;
+    GuitarSpec gSpec = new GuitarSpec();
+    gSpec.match(searchGuitar.gSpec);
+
     for (Iterator i = guitars.iterator(); i.hasNext(); ) {
-      Guitar guitar = (Guitar)i.next();
+      Guitar guitar = (Guitar) i.next();
       // Ignore serial number since that's unique
       // Ignore price since that's unique
-      String builder = searchGuitar.getManufacturer();
+
+      String builder = gSpec.getManufacturer();
       if ((builder != null) && (!builder.equals("")) &&
-              (!builder.equals(guitar.getManufacturer())))
+              (!builder.equals(guitar.gSpec.getManufacturer())))
         continue;
-      String model = searchGuitar.getModel();
+      String model = gSpec.getModel();
       if ((model != null) && (!model.equals("")) &&
-              (!model.equals(guitar.getModel())))
+              (!model.equals(guitar.gSpec.getModel())))
         continue;
-      String type = searchGuitar.getType();
+      String type = gSpec.getType();
       if ((type != null) && (!type.equals("")) &&
-              (!type.equals(guitar.getType())))
+              (!type.equals(guitar.gSpec.getType())))
         continue;
-      String backWood = searchGuitar.getBackWood();
+      String backWood = gSpec.getBackWood();
       if ((backWood != null) && (!backWood.equals("")) &&
-              (!backWood.equals(guitar.getBackWood())))
+              (!backWood.equals(guitar.gSpec.getBackWood())))
         continue;
-      String topWood = searchGuitar.getTopWood();
+      String topWood = gSpec.getTopWood();
       if ((topWood != null) && (!topWood.equals("")) &&
-              (!topWood.equals(guitar.getTopWood())))
+              (!topWood.equals(guitar.gSpec.getTopWood())))
         continue;
-      return guitar;
+      double price = searchGuitar.getPrice();
+      if ((price != 0) && (price != guitar.getPrice()))
+        continue;
+
+      guitarList.add(guitar);
     }
-    return null;
+    if(guitarList.size() !=0 ) {
+      return guitarList;
+    }
+    else {
+      return null;
+    }
   }
 }
