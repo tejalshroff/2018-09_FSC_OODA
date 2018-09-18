@@ -7,9 +7,11 @@
  */
 package HW1.edu.fitchburgstate.csc7400;
 
+import com.sun.deploy.security.ValidationState;
+
 /**
  * Contains attributes of Guitar (enum)
- * Match method searches for a particular guitar and returns true if found or false if not found
+ * Match method matches the enum value and the user value.
  *
  * @author Tejal Shroff
  */
@@ -32,21 +34,21 @@ public class GuitarSpec {
      * Type of back wood and face/top wood for guitar
      */
     enum BackwoodOrTopwood {
-        IndianRosewood, BrazilianRosewood, Mahogany, Maple, Cocobolo, Cedar, Adirondack, Alder, Sitka;
+        indianrosewood, brazilianrosewood, mahogany, maple, cocobolo, cedar, adirondack, alder, sitka;
     }
 
     /**
      * Type of Guitar
      */
     enum Type {
-        Electric, Acoustic;
+        electric, acoustic;
     }
 
     /**
      * Different manufacturer of guitar
      */
     enum Manufacturer {
-        Fender, Martin, Gibson, Collings, Olson, Ryan, PRS;
+        fender, martin, gibson, collings, olson, ryan, prs;
     }
 
 
@@ -119,69 +121,56 @@ public class GuitarSpec {
      * Matches the current guitar spec spefied by user to the guitar spec available in the enum
      * For every attribute user has specified will be checked in enum
      * (enum has all the constant values for the guitar categories)
+     * If value does not match with any of the
      *
      * @param gSpec object of guitar spec class
      */
     public void match(GuitarSpec gSpec) {
-
+        boolean isFound = false;
         this.model = gSpec.model;
-        switch (gSpec.backWood.toLowerCase()) {
-            case "indianrosewood":
-            case "brazilianrosewood":
-            case "mahogany":
-            case "maple":
-            case "cocobolo":
-            case "cedar":
-            case "adirondack":
-            case "alder":
-            case "sitka":
+
+        for (BackwoodOrTopwood backwood : BackwoodOrTopwood.values()) {
+            if (backwood.name().equals(gSpec.backWood.toLowerCase())) {
                 this.backWood = gSpec.backWood;
-                break;
-            default:
-                this.backWood = "";
-                break;
+                isFound = true;
+            }
+        }
+        if (!isFound) {
+            this.backWood = "";
         }
 
-        switch (gSpec.topWood.toLowerCase()) {
-            case "indianrosewood":
-            case "brazilianrosewood":
-            case "mahogany":
-            case "maple":
-            case "cocobolo":
-            case "cedar":
-            case "adirondack":
-            case "alder":
-            case "sitka":
+        isFound= false;
+        for (BackwoodOrTopwood topwood : BackwoodOrTopwood.values()) {
+            if (topwood.name().equals(gSpec.topWood.toLowerCase())) {
                 this.topWood = gSpec.topWood;
-                break;
-            default:
-                this.topWood = "";
-                break;
+                isFound = true;
+            }
+        }
+        if (!isFound) {
+            this.topWood = "";
         }
 
-        switch (gSpec.type.toLowerCase()) {
-            case "electric":
-            case "acoustic":
+        isFound= false;
+        for (Type type : Type.values()) {
+            if (type.name().equals(gSpec.type.toLowerCase())) {
                 this.type = gSpec.type;
-                break;
-            default:
-                this.type = "";
-                break;
+                isFound = true;
+            }
+        }
+        if (!isFound) {
+            this.type = "";
         }
 
-        switch (gSpec.manufacturer.toLowerCase()) {
-            case "fender":
-            case "martin":
-            case "gibson":
-            case "collings":
-            case "olson":
-            case "ryan":
-            case "prs":
+
+        isFound= false;
+        for (Manufacturer manufacturer : Manufacturer.values()) {
+            if (manufacturer.name().equals(gSpec.manufacturer.toLowerCase())) {
                 this.manufacturer = gSpec.manufacturer;
-                break;
-            default:
-                this.manufacturer = "";
-                break;
+                isFound = true;
+            }
+        }
+        if (!isFound) {
+            this.manufacturer = "";
         }
     }
 

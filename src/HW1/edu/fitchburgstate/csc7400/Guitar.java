@@ -20,7 +20,7 @@ public class Guitar {
     /**
      * Instantiating object of Guitar spec class
      */
-    GuitarSpec gSpec;
+  public GuitarSpec gSpec;
 
     /**
      * Full constructor

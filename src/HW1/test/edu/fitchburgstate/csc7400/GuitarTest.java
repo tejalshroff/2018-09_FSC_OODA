@@ -9,6 +9,7 @@ package HW1.test.edu.fitchburgstate.csc7400;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import HW1.edu.fitchburgstate.csc7400.GuitarSpec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import HW1.edu.fitchburgstate.csc7400.Guitar;
@@ -19,7 +20,7 @@ import HW1.edu.fitchburgstate.csc7400.Guitar;
  */
 public class GuitarTest {
 	Guitar testGuitar;
-
+	GuitarSpec gSpec = new GuitarSpec();
 	/**
 	 * Initializing the guitar object with some default value
 	 * @throws Exception
@@ -35,6 +36,7 @@ public class GuitarTest {
 				"Maple", // Back wood
 				"Adirondack" // Face wood
 		);
+		gSpec.match(this.testGuitar.gSpec);
 	}
 
 	/**
@@ -73,9 +75,9 @@ public class GuitarTest {
 	 */
 	@Test
 	void testGetManufacturer() {
-		String expected = "Gibson";
-		//String returned = this.testGuitar.getManufacturer();
-		//assertEquals(expected, returned, String.format("Manufacturer %s != %s", expected, returned));
+		String expected = "gibson";
+		String returned = this.testGuitar.gSpec.getManufacturer();
+		assertEquals(expected, returned, String.format("Manufacturer %s != %s", expected, returned));
 	}
 
 	/**
@@ -83,9 +85,9 @@ public class GuitarTest {
 	 */
 	@Test
 	void testGetModel() {
-		String expected = "EasyLearn";
-		//String returned = this.testGuitar.getModel();
-		//assertEquals(expected, returned, String.format("Model %s != %s", expected, returned));
+		String expected = "easylearn";
+		String returned = this.testGuitar.gSpec.getModel();
+		assertEquals(expected, returned, String.format("Model %s != %s", expected, returned));
 	}
 
 	/**
@@ -94,8 +96,8 @@ public class GuitarTest {
 	@Test
 	void testGetType() {
 		String expected = "electric";
-		//String returned = this.testGuitar.getType();
-		//assertEquals(expected, returned, String.format("Type %s != %s", expected, returned));
+		String returned = this.testGuitar.gSpec.getType();
+		assertEquals(expected, returned, String.format("Type %s != %s", expected, returned));
 	}
 
 	/**
@@ -103,9 +105,9 @@ public class GuitarTest {
 	 */
 	@Test
 	void testGetBackWood() {
-		String expected = "Maple";
-		//String returned = this.testGuitar.getBackWood();
-		//assertEquals(expected, returned, String.format("Back wood %s != %s", expected, returned));
+		String expected = "maple";
+		String returned = this.testGuitar.gSpec.getBackWood();
+		assertEquals(expected, returned, String.format("Back wood %s != %s", expected, returned));
 	}
 
 	/**
@@ -113,9 +115,9 @@ public class GuitarTest {
 	 */
 	@Test
 	void testGetTopWood() {
-		String expected = "Adirondack";
-		//String returned = this.testGuitar.getTopWood();
-		//assertEquals(expected, returned, String.format("Top wood %s != %s", expected, returned));
+		String expected = "adirondack";
+		String returned = this.testGuitar.gSpec.getTopWood();
+		assertEquals(expected, returned, String.format("Top wood %s != %s", expected, returned));
 	}
 
 	@org.junit.After
