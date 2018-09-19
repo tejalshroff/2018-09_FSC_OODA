@@ -43,11 +43,11 @@ public class InventoryTest {
         this.testGuitarNew = new Guitar(
                 "TN152", // serial number
                 503.35, // store price
-                "Gibson", // Manufacturer
+                GuitarSpec.Manufacturer.gibson, // Manufacturer
                 "D-456", // Manufacturer model
-                "acoustic", // Type of Guitar
-                "Mahogany", // Back wood
-                "Adirondack" // Face wood
+                GuitarSpec.Type.acoustic, // Type of Guitar
+                GuitarSpec.BackwoodOrTopwood.mahogany, // Back wood
+                GuitarSpec.BackwoodOrTopwood.adirondack // Face wood
         );
 
         this.testInventory.addGuitar(this.testGuitarNew.getSerialNumber(), this.testGuitarNew.getPrice(),
@@ -59,11 +59,11 @@ public class InventoryTest {
         this.expectedSearchValue = new Guitar(
                 "V95693",
                 1499.95,
-                "fender",
+                GuitarSpec.Manufacturer.fender,
                 "stratocastor",
-                "electric",
-                "alder",
-                "alder"
+                GuitarSpec.Type.electric,
+                GuitarSpec.BackwoodOrTopwood.alder,
+                GuitarSpec.BackwoodOrTopwood.alder
         );
     }
 
@@ -77,11 +77,11 @@ public class InventoryTest {
         Guitar testGuitarAdd = new Guitar(
                 "SP152", // serial number
                 450, // store price
-                "Fender", // Manufacturer
+                GuitarSpec.Manufacturer.fender, // Manufacturer
                 "TE-456", // Manufacturer model
-                "electric", // Type of Guitar
-                "Mahogany", // Back wood
-                "RoseWood" // Face wood
+                GuitarSpec.Type.electric, // Type of Guitar
+                GuitarSpec.BackwoodOrTopwood.mahogany, // Back wood
+                GuitarSpec.BackwoodOrTopwood.indianrosewood// Face wood
         );
         this.testInventory.addGuitar(testGuitarAdd.getSerialNumber(), testGuitarAdd.getPrice(),
                 testGuitarAdd.gSpec.getManufacturer(), testGuitarAdd.gSpec.getModel(),
@@ -117,11 +117,11 @@ public class InventoryTest {
         Guitar testGuitarAdd = new Guitar(
                 "TY555", // serial number
                 850, // store price
-                "PRS", // Manufacturer
+                GuitarSpec.Manufacturer.fender , // Manufacturer
                 "TE-585", // Manufacturer model
-                "electric", // Type of Guitar
-                "Sitka", // Back wood
-                "RoseWood" // Face wood
+                GuitarSpec.Type.electric, // Type of Guitar
+                GuitarSpec.BackwoodOrTopwood.sitka, // Back wood
+                GuitarSpec.BackwoodOrTopwood.brazilianrosewood // Face wood
         );
         this.testInventory.addGuitar(testGuitarAdd.getSerialNumber(), testGuitarAdd.getPrice(),
                 testGuitarAdd.gSpec.getManufacturer(), testGuitarAdd.gSpec.getModel(),
@@ -130,11 +130,11 @@ public class InventoryTest {
          testGuitarAdd = new Guitar(
                 "TY557", // serial number
                 900, // store price
-                "Martin", // Manufacturer
+                GuitarSpec.Manufacturer.martin, // Manufacturer
                 "TE-577", // Manufacturer model
-                "electric", // Type of Guitar
-                "Mahogany", // Back wood
-                "IndianRosewood" // Face wood
+                GuitarSpec.Type.electric, // Type of Guitar
+                GuitarSpec.BackwoodOrTopwood.mahogany, // Back wood
+                GuitarSpec.BackwoodOrTopwood.indianrosewood // Face wood
         );
         this.testInventory.addGuitar(testGuitarAdd.getSerialNumber(), testGuitarAdd.getPrice(),
                 testGuitarAdd.gSpec.getManufacturer(), testGuitarAdd.gSpec.getModel(),
@@ -158,8 +158,8 @@ public class InventoryTest {
      */
     @Test
     public void getGuitarfromBackwood() {
-        Guitar testGuitarBackwood = new Guitar("", 0, "",
-                "", "", "Mahogany", "");
+        Guitar testGuitarBackwood = new Guitar("", 0, null,
+                "", null, GuitarSpec.BackwoodOrTopwood.mahogany, null);
         List<Guitar> returnValue = testInventory.search(testGuitarBackwood);
         assertNotNull(returnValue, String.format("Guitar not found"));
     }
@@ -169,8 +169,8 @@ public class InventoryTest {
      */
     @Test
     public void getGuitarfromManufacture() {
-        Guitar testGuitarManufacture = new Guitar("", 0, "Gibson",
-                "", "", "", "");
+        Guitar testGuitarManufacture = new Guitar("", 0, GuitarSpec.Manufacturer.gibson,
+                "", null, null, null);
         List<Guitar> returnValue = testInventory.search(testGuitarManufacture);
         assertNotNull(returnValue, String.format("Guitar not found"));
     }
@@ -180,8 +180,8 @@ public class InventoryTest {
      */
     @Test
     public void getGuitarfromPriceNoAvailableInInventory() {
-        Guitar testGuitarPrice = new Guitar("", 1200, "",
-                "", "", "", "");
+        Guitar testGuitarPrice = new Guitar("", 1200, null,
+                "", null, null, null);
         List<Guitar> returnValue = testInventory.search(testGuitarPrice);
         assertNull(returnValue, String.format("Guitar not found"));
     }
@@ -190,8 +190,8 @@ public class InventoryTest {
      */
     @Test
     public void getGuitarfromPrice() {
-        Guitar testGuitarPrice = new Guitar("", 6295.95, "",
-                "", "", "", "");
+        Guitar testGuitarPrice = new Guitar("", 6295.95, null,
+                "", null, null, null);
         List<Guitar> returnValue = testInventory.search(testGuitarPrice);
         assertNotNull(returnValue, String.format("Guitar not found"));
     }
@@ -200,47 +200,20 @@ public class InventoryTest {
      */
     @Test
     public void getGuitarfromModel() {
-        Guitar testGuitarModel = new Guitar("", 0, "",
-                "TY-557", "", "", "");
+        Guitar testGuitarModel = new Guitar("", 0, null,
+                "TY-557", null, null, null);
         List<Guitar> returnValue = testInventory.search(testGuitarModel);
         assertNull(returnValue, String.format("Guitar not found"));
     }
 
-    /**
-     * Test case to search using type which should return null
-     */
-    @Test
-    public void getGuitarfromType() {
-        Guitar testGuitarModel = new Guitar("", 0, "",
-                "", "Bass", "", "");
-        gspec.match(testGuitarModel.gSpec);
-       if(testGuitarModel.gSpec.getModel() == "") {
-           assertNull(null, String.format("Guitar found"));
-       }
-    }
-
-    /**
-     * Test case to search using topwood which should return null
-     */
-    @Test
-    public void getGuitarfromTopWood() {
-        Guitar testGuitarTopWood = new Guitar("", 0, "",
-                "", "", "", "Sandalwood");
-        gspec.match(testGuitarTopWood.gSpec);
-        if(gspec.getTopWood() =="")
-        {
-            assertNull(null, String.format("Guitar found"));
-        }
-
-    }
 
     /**
      * Test case for searching guitar where all parameters are null and will return first guitar in the inventory list
      */
     @Test
     public void getGuitarwithnoPreference() {
-        Guitar testGuitarwithNoPreference = new Guitar("", 0, "",
-                "", "", "", "");
+        Guitar testGuitarwithNoPreference = new Guitar("", 0, null,
+                "", null, null, null);
         List<Guitar> returnValue = testInventory.search(testGuitarwithNoPreference);
         assertNotNull(returnValue, String.format("Guitar found"));
     }

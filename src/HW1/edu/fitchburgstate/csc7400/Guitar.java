@@ -20,26 +20,23 @@ public class Guitar {
     /**
      * Instantiating object of Guitar spec class
      */
-  public GuitarSpec gSpec;
+
 
     /**
      * Full constructor
-     *
      * @param serialNumber manufacturer serial number
      * @param price        store price
-     * @param manufacturer the guitar's manufacturer
+     * @param manufacturer the guitar's manufacturer enum
      * @param model        the manufacturers model
-     * @param type         guitar type (electric/accoustic)
-     * @param backWood     the wood used for the guitar body
-     * @param topWood      the wood used for the guitar's face
+     * @param type         guitar type (electric/accoustic) enum
+     * @param backwood     the wood used for the guitar body enum
+     * @param topwood      the wood used for the guitar's face enum
      */
-    public Guitar(String serialNumber, double price,
-                  String manufacturer, String model,
-                  String type, String backWood,
-                  String topWood) {
+    public Guitar(String serialNumber, double price,GuitarSpec.Manufacturer manufacturer, String model ,GuitarSpec.Type type,
+                  GuitarSpec.BackwoodOrTopwood backwood ,GuitarSpec.BackwoodOrTopwood topwood) {
         this.serialNumber = serialNumber;
         this.price = price;
-        this.gSpec = new GuitarSpec(manufacturer, model, type, backWood, topWood);
+        this.gSpec = new GuitarSpec(manufacturer,model,type,backwood,topwood);
     }
 
     /**
@@ -51,6 +48,7 @@ public class Guitar {
     public String getSerialNumber() {
         return serialNumber;
     }
+
 
     /**
      * Returns store price of guitar
@@ -76,4 +74,8 @@ public class Guitar {
      */
     private double price;
 
+    /***
+     * Object instantiation for Guitar spec class
+     */
+    public GuitarSpec gSpec;
 }

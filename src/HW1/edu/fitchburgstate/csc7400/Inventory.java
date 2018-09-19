@@ -34,10 +34,10 @@ public class Inventory {
    * @param topWood the wood used for the guitar's face
    */
   public void addGuitar(String serialNumber, double price,
-                        String builder, String model,
-                        String type, String backWood, String topWood) {
-    Guitar guitar = new Guitar(serialNumber, price, builder.toLowerCase(),
-            model.toLowerCase(), type.toLowerCase(), backWood.toLowerCase(), topWood.toLowerCase());
+                        GuitarSpec.Manufacturer builder, String model,
+                        GuitarSpec.Type type, GuitarSpec.BackwoodOrTopwood backWood, GuitarSpec.BackwoodOrTopwood topWood) {
+    Guitar guitar = new Guitar(serialNumber, price, builder,
+            model.toLowerCase(), type, backWood, topWood);
     guitars.add(guitar);
   }
 
@@ -62,40 +62,23 @@ public class Inventory {
    * @return Details for searched guitar else returns null if guitar not found
    */
   public List<Guitar>  search(Guitar searchGuitar) {
+
     List<Guitar> guitarList = new LinkedList<Guitar>() ;
     GuitarSpec gSpec = new GuitarSpec();
-    gSpec.match(searchGuitar.gSpec);
+
 
     for (Iterator i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar) i.next();
       // Ignore serial number since that's unique
       // Ignore price since that's unique
 
-      String builder = gSpec.getManufacturer();
-      if ((builder != null) && (!builder.equals("")) &&
-              (!builder.equals(guitar.gSpec.getManufacturer())))
-        continue;
-      String model = gSpec.getModel();
-      if ((model != null) && (!model.equals("")) &&
-              (!model.equals(guitar.gSpec.getModel())))
-        continue;
-      String type = gSpec.getType();
-      if ((type != null) && (!type.equals("")) &&
-              (!type.equals(guitar.gSpec.getType())))
-        continue;
-      String backWood = gSpec.getBackWood();
-      if ((backWood != null) && (!backWood.equals("")) &&
-              (!backWood.equals(guitar.gSpec.getBackWood())))
-        continue;
-      String topWood = gSpec.getTopWood();
-      if ((topWood != null) && (!topWood.equals("")) &&
-              (!topWood.equals(guitar.gSpec.getTopWood())))
-        continue;
       double price = searchGuitar.getPrice();
       if ((price != 0) && (price != guitar.getPrice()))
         continue;
+      if(gSpec.match(searchGuitar.gSpec,guitar))
+        continue;
 
-      guitarList.add(guitar);
+        guitarList.add(guitar);
     }
     if(guitarList.size() !=0 ) {
       return guitarList;
