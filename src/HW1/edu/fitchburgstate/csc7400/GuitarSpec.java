@@ -118,8 +118,8 @@ public class GuitarSpec {
 
 
     /**
-     * Matches the current guitar spec spefied by user to the guitar spec available in the enum
-     * For every attribute user has specified will be checked in enum
+     * Matches the current guitar spec specified by user to the guitar spec available in the enum
+     * Every attribute that user has specified will be checked in enum
      * (enum has all the constant values for the guitar categories)
      * If value does not match with any of the
      *
@@ -150,6 +150,4 @@ public class GuitarSpec {
 
         return true;
     }
-
 }
-

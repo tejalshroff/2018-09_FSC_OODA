@@ -32,8 +32,7 @@ public class InventoryTest {
 
     /**
      * This method will be executed before every test method and will initialize all the object of
-     * Guitar class , Inventory call and FindGuitarTester class
-     *
+     * Guitar class, Inventory call and FindGuitarTester class
      * @throws Exception
      */
     @Before
@@ -66,7 +65,6 @@ public class InventoryTest {
                 GuitarSpec.BackwoodOrTopwood.alder
         );
     }
-
 
     /**
      * Test case to add guitar to inventory
@@ -109,7 +107,7 @@ public class InventoryTest {
     }
 
     /**
-     * Add two guitar's in invemtory and check if the first Guitar Is is present in inventory
+     * Add two guitar's in invemtory and check if the first Guitar is present in inventory
      */
     @Test
     public void AddTwoGuitarsinInventory()
@@ -250,5 +248,42 @@ public class InventoryTest {
             assertEquals(guitar1.gSpec.getBackWood(),guitar2.gSpec.getBackWood(),String.format("BackWood are not equal"));
             assertEquals(guitar1.gSpec.getTopWood(),guitar2.gSpec.getTopWood(),String.format("TopWood are not equal"));
         }
+    }
+
+    /**
+     * Test case to search guitar on two filters Back wood and Face wood
+     */
+    @Test
+    public void getGuitaronBackwoodandFacewood()
+    {
+        Guitar testGuitar = new Guitar("",0,null,"",null,
+                GuitarSpec.BackwoodOrTopwood.alder, GuitarSpec.BackwoodOrTopwood.alder);
+        List<Guitar> returnList = testInventory.search(testGuitar);
+        assertNotNull(returnList,String.format("Guitar not prsent in Inventory"));
+    }
+
+    /**
+     * Test case to search guitar on three filters Type n Manufacturer and Back wood
+     */
+    @Test
+    public void getGuitaronTypeManufacturerandBackwood()
+    {
+        Guitar testGuitar = new Guitar("",0,GuitarSpec.Manufacturer.gibson,"", GuitarSpec.Type.electric,
+                GuitarSpec.BackwoodOrTopwood.mahogany,null );
+        List<Guitar> returnList = testInventory.search(testGuitar);
+        assertNotNull(returnList,String.format("Guitar not prsent in Inventory"));
+    }
+
+
+    /**
+     * Test case to search guitar on one filters Type
+     */
+    @Test
+    public void getGuitaronType()
+    {
+        Guitar testGuitar = new Guitar("",0,null,"", GuitarSpec.Type.acoustic,
+                null,null );
+        List<Guitar> returnList = testInventory.search(testGuitar);
+        assertNotNull(returnList,String.format("Guitar not prsent in Inventory"));
     }
 }

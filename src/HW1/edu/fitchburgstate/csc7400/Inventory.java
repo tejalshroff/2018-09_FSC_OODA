@@ -75,7 +75,7 @@ public class Inventory {
       double price = searchGuitar.getPrice();
       if ((price != 0) && (price != guitar.getPrice()))
         continue;
-      if(gSpec.match(searchGuitar.gSpec,guitar))
+      if(!gSpec.match(searchGuitar.gSpec,guitar))
         continue;
 
         guitarList.add(guitar);

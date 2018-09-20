@@ -71,5 +71,4 @@ public class FindGuitarTester {
         inventory.addGuitar("6 29584", 2100.95, GuitarSpec.Manufacturer.prs, "Dave Navarro Signature",
                 GuitarSpec.Type.electric,GuitarSpec.BackwoodOrTopwood.mahogany,GuitarSpec.BackwoodOrTopwood.maple);
     }
-
 }

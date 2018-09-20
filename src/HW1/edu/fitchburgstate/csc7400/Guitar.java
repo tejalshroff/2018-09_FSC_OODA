@@ -11,7 +11,6 @@ package HW1.edu.fitchburgstate.csc7400;
  * Guitar contains the information needed to keep track of a type of guitar from
  * Rick's music store
  * All getter setter of guitar attributes are initialized
- *
  * @author Tejal Shroff
  */
 
@@ -20,7 +19,6 @@ public class Guitar {
     /**
      * Instantiating object of Guitar spec class
      */
-
 
     /**
      * Full constructor
