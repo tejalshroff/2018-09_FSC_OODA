@@ -11,6 +11,7 @@ package HW2.edu.fitchburgstate.csc7400;
  * Guitar contains the information needed to keep track of a type of guitar from
  * Rick's music store
  * All getter setter of guitar attributes are initialized
+ * Guitar constructor will have parameters as enums for manufacturer , backwood , topwood and type of guitar.
  * @author Tejal Shroff
  */
 
@@ -36,7 +37,6 @@ public class Guitar {
 
     /**
      * Returns the manufacturer serial number
-     * <p>
      * NB: Gets and sets do not need @params or @returns because they do one thing which
      * is already in the comment
      */
