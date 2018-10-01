@@ -5,13 +5,12 @@
  * Date: 2018-09-14
  * Students:  Tejal Shroff (@01387716)
  */
-package HW1.edu.fitchburgstate.csc7400;
+package HW2.edu.fitchburgstate.csc7400;
 
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import  HW1.edu.fitchburgstate.csc7400.Guitar;
 
 /**
  * Inventory keeps a searchable collection of Guitars. It is meant to be use

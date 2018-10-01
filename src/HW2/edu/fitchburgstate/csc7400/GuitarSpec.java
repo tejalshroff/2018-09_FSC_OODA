@@ -5,9 +5,7 @@
  * Date: 2018-09-14
  * Students:  Tejal Shroff (@01387716)
  */
-package HW1.edu.fitchburgstate.csc7400;
-
-import com.sun.deploy.security.ValidationState;
+package HW2.edu.fitchburgstate.csc7400;
 
 /**
  * Contains attributes of Guitar (enum)
@@ -16,9 +14,20 @@ import com.sun.deploy.security.ValidationState;
  * @author Tejal Shroff
  */
 public class GuitarSpec {
+    /**
+     * Default constructor
+     */
     public GuitarSpec() {
     }
 
+    /**
+     * Full Constructor
+     * @param manufacturer the guitar's manufacturer enum
+     * @param model  the manufacturers model
+     * @param type guitar type (electric/accoustic) enum
+     * @param backWood the wood used for the guitar body enum
+     * @param topWood  the wood used for the guitar's face enum
+     */
     public GuitarSpec(Manufacturer manufacturer, String model,
                       Type type, BackwoodOrTopwood backWood,
                       BackwoodOrTopwood topWood) {
@@ -94,7 +103,6 @@ public class GuitarSpec {
     /**
      * Returns the guitar type
      *
-     * @return
      */
     public Type getType() {
         return type;
@@ -109,8 +117,6 @@ public class GuitarSpec {
 
     /**
      * Returns the type of wood used in the face
-     *
-     * @return
      */
     public BackwoodOrTopwood getTopWood() {
         return topWood;
@@ -122,11 +128,15 @@ public class GuitarSpec {
      * Every attribute that user has specified will be checked in enum
      * (enum has all the constant values for the guitar categories)
      * If value does not match with any of the
-     *
+     * If guitar spec values of guitar list is null return false (no match found)
      * @param gSpec object of guitar spec class
      */
     public boolean match(GuitarSpec gSpec, Guitar guitar) {
 
+        if(gSpec == null || guitar== null)
+        {
+            return false;
+        }
         Manufacturer builder = gSpec.getManufacturer();
         if ((builder != null) &&
                 (!builder.equals(guitar.gSpec.getManufacturer())))

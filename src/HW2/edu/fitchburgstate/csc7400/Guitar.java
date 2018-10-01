@@ -5,7 +5,7 @@
  * Date: 2018-09-14
  * Students:  Tejal Shroff (@01387716)
  */
-package HW1.edu.fitchburgstate.csc7400;
+package HW2.edu.fitchburgstate.csc7400;
 
 /**
  * Guitar contains the information needed to keep track of a type of guitar from
@@ -16,9 +16,6 @@ package HW1.edu.fitchburgstate.csc7400;
 
 
 public class Guitar {
-    /**
-     * Instantiating object of Guitar spec class
-     */
 
     /**
      * Full constructor

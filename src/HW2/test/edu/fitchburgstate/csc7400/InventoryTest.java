@@ -5,12 +5,12 @@
  * Date: 2018-09-14
  * Students:  Tejal Shroff (@01387716)
  */
-package HW1.test.edu.fitchburgstate.csc7400;
+package HW2.test.edu.fitchburgstate.csc7400;
 
-import HW1.edu.fitchburgstate.csc7400.Guitar;
-import HW1.edu.fitchburgstate.csc7400.GuitarSpec;
-import HW1.edu.fitchburgstate.csc7400.Inventory;
-import HW1.edu.fitchburgstate.csc7400.FindGuitarTester;
+import HW2.edu.fitchburgstate.csc7400.Guitar;
+import HW2.edu.fitchburgstate.csc7400.GuitarSpec;
+import HW2.edu.fitchburgstate.csc7400.Inventory;
+import HW2.edu.fitchburgstate.csc7400.FindGuitarTester;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
