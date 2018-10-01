@@ -130,6 +130,7 @@ public class GuitarSpec {
      * If value does not match with any of the
      * If guitar spec values of guitar list is null return false (no match found)
      * @param gSpec object of guitar spec class
+     * @param guitar object of guitar class
      */
     public boolean match(GuitarSpec gSpec, Guitar guitar) {
 
